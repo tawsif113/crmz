@@ -30,7 +30,7 @@ public class Lead extends BaseEntity {
 
   @Enumerated(EnumType.STRING)
   @Column(nullable = false)
-  private LeadStatus status;
+  private LeadStatus status= LeadStatus.NEW;
 
   @Column(precision = 15, scale = 2)
   private BigDecimal estimatedValue;

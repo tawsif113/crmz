@@ -39,8 +39,8 @@ public class Activity extends BaseEntity{
   private LocalDateTime activityDateTime;
 
   @ManyToOne(optional = false)
-  @JoinColumn(name = "user_id", nullable = false)
-  private User user;
+  @JoinColumn(name = "assigned_user_id", nullable = false)
+  private User assignedUser;
 
   @Enumerated(EnumType.STRING)
   @Column(nullable = false)

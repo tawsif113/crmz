@@ -25,4 +25,13 @@ public class RouteConstant {
   //CRM User Section
   public static final String CRM_USER_BASE_PATH = BASE_PATH + "/users";
 
+  //CRM Contact Section
+  public static final String CONTACT_BASE_PATH = BASE_PATH + "/contacts";
+
+  //CRM Lead Section
+  public static final String LEAD_BASE_PATH = BASE_PATH + "/leads";
+  public static final String LEAD_SOURCE_BASE_PATH = BASE_PATH + "/lead-sources";
+
+  public static final String ACTIVITY_TYPE_BASE_PATH = BASE_PATH + "/activity-types";
+  public static final String ACTIVITY_BASE_PATH = BASE_PATH + "/activities";
 }
