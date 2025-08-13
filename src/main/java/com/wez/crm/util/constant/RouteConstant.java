@@ -34,4 +34,6 @@ public class RouteConstant {
 
   public static final String ACTIVITY_TYPE_BASE_PATH = BASE_PATH + "/activity-types";
   public static final String ACTIVITY_BASE_PATH = BASE_PATH + "/activities";
+
+  public static final String AUDIT_LOG_BASE_PATH = BASE_PATH + "/audit-logs";
 }
