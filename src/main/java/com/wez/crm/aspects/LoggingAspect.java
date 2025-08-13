@@ -1,4 +1,4 @@
-package com.wez.crm.Aspects;
+package com.wez.crm.aspects;
 
 import java.util.Arrays;
 import org.aspectj.lang.JoinPoint;

@@ -1,4 +1,4 @@
-package com.wez.crm.Aspects;
+package com.wez.crm.aspects;
 
 import static com.wez.crm.util.constant.RabbitMQConstant.AUDIT_LOG_ROUTING_KEY;
 import static com.wez.crm.util.constant.RabbitMQConstant.CRM_EVENT_EXCHANGE;

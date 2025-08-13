@@ -1,4 +1,4 @@
-package com.wez.crm.Aspects;
+package com.wez.crm.aspects;
 
 import java.nio.file.AccessDeniedException;
 import org.aspectj.lang.annotation.Aspect;
