@@ -7,10 +7,14 @@ import static com.wez.crm.util.constant.ExceptionMessageConstant.ENTITY_NOT_FOUN
 import com.wez.crm.dto.RoleRequestDto;
 import com.wez.crm.dto.RoleResponseDto;
 import com.wez.crm.entity.Role;
+import com.wez.crm.enums.ActionType;
+import com.wez.crm.enums.EntityName;
 import com.wez.crm.exception.NotFoundException;
 import com.wez.crm.mapper.RoleMapper;
 import com.wez.crm.repository.RoleRepository;
 import com.wez.crm.service.RolePermissionService;
+import com.wez.crm.util.annotations.AuditLogAnnotation;
+import com.wez.crm.util.constant.AuditLogDetailsConstant;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -30,11 +34,21 @@ public class RolePermissionServiceImpl implements RolePermissionService {
   }
 
   @Override
+  @AuditLogAnnotation(
+      entityName = EntityName.ROLE,
+      actionType = ActionType.GET,
+      details = AuditLogDetailsConstant.GET_A_ROLE
+  )
   public RoleResponseDto findRoleResponseById(Long id) {
     return roleMapper.toResponseDto(findRoleById(id));
   }
 
   @Override
+  @AuditLogAnnotation(
+      entityName = EntityName.ROLE,
+      actionType = ActionType.CREATE,
+      details = AuditLogDetailsConstant.CREATE_ROLE
+  )
   public RoleResponseDto createRole(RoleRequestDto roleRequestDto) {
     Role role = roleMapper.toEntity(roleRequestDto);
     return roleMapper.toResponseDto(roleRepository.save(role));
