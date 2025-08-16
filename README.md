@@ -245,5 +245,4 @@ The system is considered complete when:
 - User authentication, authorization, and profile updates work properly.
 - All data validation rules are enforced.
 - Search functionality, including auto-suggestions, works across all modules.
-
-# Performance and security requirements are met.
+-  Performance and security requirements are met.
