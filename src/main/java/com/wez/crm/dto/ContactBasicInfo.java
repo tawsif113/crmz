@@ -9,6 +9,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class ContactBasicInfo {
   private Long id;
-  private Long userId;
+  private String email;
+  private String firstName;
   private String phoneNumber;
 }

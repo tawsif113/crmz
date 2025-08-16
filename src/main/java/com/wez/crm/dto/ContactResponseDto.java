@@ -10,9 +10,8 @@ import lombok.Setter;
 @AllArgsConstructor
 public class ContactResponseDto {
   private Long id;
-  private UserBasicInfo user;
-  private String phoneNumber;
-  private String companyName;
+  private String firstName;
+  private String email;
   private String jobTitle;
   private LocalDateTime createdAt;
 }

@@ -15,7 +15,8 @@ public interface ActivityRepository extends JpaRepository<Activity, Long> {
       a.id,
       new com.wez.crm.dto.ContactBasicInfo(
           c.id,
-          c.user.id,
+          c.email,
+          c.firstName,
           c.phoneNumber
       ),
       new com.wez.crm.dto.LeadBasicInfo(
@@ -49,7 +50,8 @@ public interface ActivityRepository extends JpaRepository<Activity, Long> {
       a.id,
       new com.wez.crm.dto.ContactBasicInfo(
           c.id,
-          c.user.id,
+          c.email,
+          c.firstName,
           c.phoneNumber
       ),
       new com.wez.crm.dto.LeadBasicInfo(

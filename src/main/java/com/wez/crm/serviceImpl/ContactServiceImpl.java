@@ -23,7 +23,6 @@ import org.springframework.stereotype.Service;
 public class ContactServiceImpl implements ContactService {
 
   private final ContactRepository contactRepository;
-  private final UserService userService;
   private final ContactMapper contactMapper;
 
   @Override
@@ -34,17 +33,14 @@ public class ContactServiceImpl implements ContactService {
 
   @Override
   public ContactResponseDto createContact(CreateContactRequestDto createContactRequestDto) {
-    validateContactRequestDto(createContactRequestDto);
     Contact contact = prepareContactEntity(createContactRequestDto);
     return contactMapper.toContactResponseDto(contactRepository.save(contact));
   }
 
   @Override
   public ContactResponseDto updateContact(Long id, UpdateContactRequestDto updateContactRequestDto) {
-    validateContactRequestDto(updateContactRequestDto);
     Contact existingContact = getContactById(id);
-    User user = userService.getReferenceById(updateContactRequestDto.getUserId() != null ? updateContactRequestDto.getUserId() : existingContact.getUser().getId());
-    existingContact = contactMapper.updateEntity(updateContactRequestDto, user);
+    contactMapper.updateEntity(updateContactRequestDto,existingContact);
     return contactMapper.toContactResponseDto(contactRepository.save(existingContact));
   }
 
@@ -78,24 +74,7 @@ public class ContactServiceImpl implements ContactService {
     return contactRepository.findAllContactResponseDto(pageable);
   }
 
-  private void validateContactRequestDto(Object object){
-
-    switch (object){
-      case CreateContactRequestDto createContactRequestDto -> {
-        if(!userService.isUserExistsById(createContactRequestDto.getUserId())) {
-          throw new NotFoundException(String.format(ExceptionMessageConstant.ENTITY_NOT_FOUND_BY_ID, createContactRequestDto.getUserId(), AppConstant.USER));
-        }
-      }
-      case UpdateContactRequestDto updateContactRequestDto -> {
-        if(updateContactRequestDto.getUserId() != null && !userService.isUserExistsById(updateContactRequestDto.getUserId())) {
-          throw new NotFoundException(String.format(ExceptionMessageConstant.ENTITY_NOT_FOUND_BY_ID, updateContactRequestDto.getUserId(), AppConstant.USER));
-        }
-      }
-      default -> throw new IllegalArgumentException(String.format(ExceptionMessageConstant.ILLEGAL_OBJECT, object.getClass().getSimpleName()));
-    }
-  }
-
   private Contact prepareContactEntity(CreateContactRequestDto createContactRequestDto) {
-    return contactMapper.toEntity(createContactRequestDto, userService.getReferenceById(createContactRequestDto.getUserId()));
+    return contactMapper.toEntity(createContactRequestDto);
   }
 }

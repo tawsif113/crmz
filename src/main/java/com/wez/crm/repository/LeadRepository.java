@@ -13,9 +13,10 @@ public interface LeadRepository extends JpaRepository<Lead, Long> {
         l.id,
         new com.wez.crm.dto.ContactBasicInfo(
           c.id,
-          c.user.id,
+          c.email,
+          c.firstName,
           c.phoneNumber
-          ),
+      ),
         new com.wez.crm.dto.LeadSourceBasicInfo(
           s.id,
           s.name
