@@ -52,7 +52,7 @@ public class LeadController {
 
   @PatchMapping(PATH_ID)
   public ResponseEntity<ApiResponse<LeadResponseDto>> updateLead(@PathVariable Long id,
-      @RequestBody UpdateLeadRequestDto updateLeadRequestDto) {
+      @Valid @RequestBody UpdateLeadRequestDto updateLeadRequestDto) {
     return ApiResponseUtil.success(leadService.updateLead(id, updateLeadRequestDto),
         String.format(ApiResponseConstant.UPDATE_SUCCESSFUL_TEMPLATE, AppConstant.LEAD));
   }

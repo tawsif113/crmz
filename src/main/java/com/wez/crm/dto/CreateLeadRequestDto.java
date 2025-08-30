@@ -1,5 +1,6 @@
 package com.wez.crm.dto;
 
+import com.wez.crm.util.annotations.ValidLeadRequest;
 import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -9,6 +10,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
+@ValidLeadRequest
 public class CreateLeadRequestDto {
   @NotNull(message = "Contact ID cannot be null")
   private Long contactId;
